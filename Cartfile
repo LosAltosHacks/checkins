@@ -1,1 +1,2 @@
 github "yannickl/QRCodeReader.swift" >= 8.0.3
+github "Alamofire/Alamofire" ~> 4.5
