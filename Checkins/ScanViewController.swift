@@ -9,7 +9,14 @@
 import UIKit
 import QRCodeReader
 
+enum CheckinMode {
+    case checkin(Attendee.Checkin)
+    case general
+}
+
 class ScanViewController: UIViewController {
+    @IBOutlet weak var checkinSelect: MultiSelectSegmentedControl!
+
     let reader: QRCodeReaderViewController = {
         let builder = QRCodeReaderViewControllerBuilder {
             $0.reader = QRCodeReader(metadataObjectTypes: [.qr], captureDevicePosition: .back)
@@ -18,9 +25,16 @@ class ScanViewController: UIViewController {
         return QRCodeReaderViewController(builder: builder)
     }()
 
+    var checkinMode = CheckinMode.general {
+        didSet {
+            print(checkinMode)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        checkinSelect.delegate = self
         reader.completionBlock = self.finishedScanning(result:)
         reader.modalPresentationStyle = .formSheet
     }
@@ -48,7 +62,13 @@ class ScanViewController: UIViewController {
     }
 
     func found(attendee: Attendee) {
-        self.performSegue(withIdentifier: "showAttendee", sender: attendee)
+        switch checkinMode {
+        case .general:
+            self.performSegue(withIdentifier: "showAttendee", sender: attendee)
+        case let .checkin(checkin):
+            //TODO: implement
+            print(checkin)
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,6 +78,20 @@ class ScanViewController: UIViewController {
             attendeeVC.attendee = sender as! Attendee
         default:
             break
+        }
+    }
+}
+
+extension ScanViewController: MultiSelectSegmentedControlDelegate {
+    func multiSelect(_ multiSelectSegmentedControl: MultiSelectSegmentedControl, didChangeValue value: Bool, at index: UInt) {
+        switch value {
+        case false:
+            self.checkinMode = .general
+        case true:
+            // deselect all except this one
+            multiSelectSegmentedControl.selectedSegmentIndexes = [numericCast(index)]
+            let title = multiSelectSegmentedControl.titleForSegment(at: numericCast(index))!
+            self.checkinMode = .checkin(Attendee.Checkin(rawValue: title)!)
         }
     }
 }

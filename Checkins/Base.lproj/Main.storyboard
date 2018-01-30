@@ -32,22 +32,33 @@
                                     <action selector="startScan:" destination="o4V-9Z-GZ8" eventType="touchUpInside" id="d8h-Nd-J5L"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="omo-Jd-NIH" customClass="MultiSelectSegmentedControl">
+                                <rect key="frame" x="78.5" y="620" width="218" height="29"/>
+                                <segments>
+                                    <segment title="Breakfast"/>
+                                    <segment title="Lunch"/>
+                                    <segment title="Dinner"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="SNs-Sw-MlI" firstAttribute="bottom" secondItem="omo-Jd-NIH" secondAttribute="bottom" constant="19" id="8xv-JG-J3b"/>
                             <constraint firstItem="ppj-l9-YP3" firstAttribute="leading" secondItem="SNs-Sw-MlI" secondAttribute="leading" id="IZt-Wx-4Nj"/>
                             <constraint firstItem="ppj-l9-YP3" firstAttribute="trailing" secondItem="SNs-Sw-MlI" secondAttribute="trailing" id="TNP-uA-rkF"/>
                             <constraint firstItem="ppj-l9-YP3" firstAttribute="centerY" secondItem="SNs-Sw-MlI" secondAttribute="centerY" id="e6N-2W-edr"/>
+                            <constraint firstItem="omo-Jd-NIH" firstAttribute="centerX" secondItem="SNs-Sw-MlI" secondAttribute="centerX" id="omV-sf-6fF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SNs-Sw-MlI"/>
                     </view>
                     <connections>
+                        <outlet property="checkinSelect" destination="omo-Jd-NIH" id="F54-79-XQq"/>
                         <segue destination="em0-UF-6PZ" kind="show" identifier="showAttendee" id="Cz9-Jm-fgY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOD-kf-E7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462.5" y="69.5"/>
+            <point key="canvasLocation" x="461.60000000000002" y="68.815592203898049"/>
         </scene>
         <!--Attendee View Controller-->
         <scene sceneID="150-tC-X3w">
