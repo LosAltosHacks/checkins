@@ -21,7 +21,6 @@ class Airtable {
         ]
 
         Alamofire.request(components.url!).responseJSON { data in
-            print(data.result.value!)
             guard let jsonData = data.data else { return completion(nil) }
             let decoder = JSONDecoder()
             do {
@@ -34,7 +33,7 @@ class Airtable {
         }
     }
 
-    class func updateCheckins(attendee: Attendee) {
+    class func updateCheckins(attendee: Attendee, completion: @escaping (Bool) -> ()) {
         var request = try! URLRequest(
             url: root.appendingPathComponent(attendee.id),
             method: .patch,
@@ -50,8 +49,8 @@ class Airtable {
         ]
         request.httpBody = try! JSONEncoder().encode(payload)
 
-        Alamofire.request(request).responseJSON { data in
-            print(data.result.value!)
+        Alamofire.request(request).validate(statusCode: 200..<300).responseJSON { data in
+            completion(data.result.isSuccess)
         }
     }
 }

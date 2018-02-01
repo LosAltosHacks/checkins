@@ -8,6 +8,7 @@
 
 import UIKit
 import QRCodeReader
+import JGProgressHUD
 
 enum CheckinMode {
     case checkin(Attendee.Checkin)
@@ -54,10 +55,26 @@ class ScanViewController: UIViewController {
             return
         }
 
+        performCheckin(code: code)
+    }
+
+    func performCheckin(code: String) {
+        let hud = JGProgressHUD(style: .light)
+        hud.textLabel.text = "Loading"
+        hud.show(in: self.view, animated: true)
+
         Airtable.attendee(code: code) { [weak self] attendee in
             guard let s = self else { return }
-            guard let attendee = attendee else { return s.alert(message: "Error fetching attendee.") }
-            s.found(attendee: attendee)
+
+            switch attendee {
+            case .none:
+                hud.textLabel.text = "Error fetching attendee"
+                hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                hud.dismiss(afterDelay: 1, animated: true)
+            case let .some(attendee):
+                hud.dismiss(animated: true)
+                s.found(attendee: attendee)
+            }
         }
     }
 
@@ -66,8 +83,35 @@ class ScanViewController: UIViewController {
         case .general:
             self.performSegue(withIdentifier: "showAttendee", sender: attendee)
         case let .checkin(checkin):
-            //TODO: implement
-            print(checkin)
+            self.checkIn(attendee: attendee, checkin: checkin)
+        }
+    }
+
+    func checkIn(attendee: Attendee, checkin: Attendee.Checkin) {
+        let nameString = "\(attendee.lastName ?? "N/A"), \(attendee.firstName ?? "N/A")"
+
+        var attendee = attendee
+        guard !attendee.checkins.contains(checkin) else {
+            return self.alert(message: "(\(nameString)) already checked in for meal.")
+        }
+        attendee.checkins.append(checkin)
+
+        let hud = JGProgressHUD(style: .light)
+        hud.textLabel.text = "Loading"
+        hud.detailTextLabel.text = nameString
+        hud.show(in: self.view, animated: true)
+
+        Airtable.updateCheckins(attendee: attendee) { success in
+            switch success {
+            case true:
+                hud.textLabel.text = "Checked in"
+                hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+            case false:
+                hud.textLabel.text = "Error checking in"
+                hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            }
+
+            hud.dismiss(afterDelay: 1, animated: true)
         }
     }
 

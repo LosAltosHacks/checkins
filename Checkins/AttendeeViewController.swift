@@ -59,7 +59,10 @@ class AttendeeViewController: UIViewController {
     }
 
     func update() {
-        Airtable.updateCheckins(attendee: attendee)
+        Airtable.updateCheckins(attendee: attendee) { [weak self] success in
+            guard let s = self else { return }
+            guard success else { return s.alert(message: "Failed to update attendee") }
+        }
     }
 
     @objc func switched(sender: UISwitch) {

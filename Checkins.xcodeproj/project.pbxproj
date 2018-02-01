@@ -23,6 +23,9 @@
 		37CA8F9B201BABC5009A25F4 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA8F96201BABC4009A25F4 /* Secrets.swift */; };
 		37CA8F9C201BABC5009A25F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA8F97201BABC4009A25F4 /* AppDelegate.swift */; };
 		37CA8F9E201BABC5009A25F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CA8F99201BABC5009A25F4 /* Assets.xcassets */; };
+		37E2BC292023CB290062DF41 /* JGProgressHUD.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 37E2BC272023CB290062DF41 /* JGProgressHUD.framework.dSYM */; };
+		37E2BC2A2023CB330062DF41 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E2BC262023CB290062DF41 /* JGProgressHUD.framework */; };
+		37E2BC2B2023CB330062DF41 /* JGProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 37E2BC262023CB290062DF41 /* JGProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		37F66003201959D900600D25 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F66002201959D900600D25 /* ScanViewController.swift */; };
 		37F6600B201959D900600D25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F66009201959D900600D25 /* LaunchScreen.storyboard */; };
 		37F6602920195DEA00600D25 /* Airtable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6602820195DEA00600D25 /* Airtable.swift */; };
@@ -47,6 +50,7 @@
 			files = (
 				377954992019840600CBE146 /* Alamofire.framework in Embed Frameworks */,
 				3779549B2019840600CBE146 /* QRCodeReader.framework in Embed Frameworks */,
+				37E2BC2B2023CB330062DF41 /* JGProgressHUD.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +110,8 @@
 		37CA8F97201BABC4009A25F4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CA8F98201BABC5009A25F4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37CA8F99201BABC5009A25F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		37E2BC262023CB290062DF41 /* JGProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JGProgressHUD.framework; path = Carthage/Build/iOS/JGProgressHUD.framework; sourceTree = "<group>"; };
+		37E2BC272023CB290062DF41 /* JGProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = JGProgressHUD.framework.dSYM; path = Carthage/Build/iOS/JGProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		37F65FFD201959D900600D25 /* Checkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F66002201959D900600D25 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		37F6600A201959D900600D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 			files = (
 				377954982019840600CBE146 /* Alamofire.framework in Frameworks */,
 				3779549A2019840600CBE146 /* QRCodeReader.framework in Frameworks */,
+				37E2BC2A2023CB330062DF41 /* JGProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +141,8 @@
 				377954922019840000CBE146 /* Alamofire.framework.dSYM */,
 				377954912019840000CBE146 /* QRCodeReader.framework */,
 				377954932019840000CBE146 /* QRCodeReader.framework.dSYM */,
+				37E2BC262023CB290062DF41 /* JGProgressHUD.framework */,
+				37E2BC272023CB290062DF41 /* JGProgressHUD.framework.dSYM */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -390,6 +399,7 @@
 			files = (
 				377954972019840000CBE146 /* QRCodeReader.framework.dSYM in Resources */,
 				37F6600B201959D900600D25 /* LaunchScreen.storyboard in Resources */,
+				37E2BC292023CB290062DF41 /* JGProgressHUD.framework.dSYM in Resources */,
 				37CA8F9A201BABC5009A25F4 /* secrets.plist in Resources */,
 				370813FA201E947600BCDB26 /* Main.storyboard in Resources */,
 				37CA8F9E201BABC5009A25F4 /* Assets.xcassets in Resources */,
