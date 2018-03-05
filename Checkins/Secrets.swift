@@ -21,4 +21,5 @@ struct Secrets: Codable {
 
     let airtableApiKey: String
     let airtableAppId: String
+    let developerAttendeeCode: String
 }

@@ -32,10 +32,16 @@ class ScanViewController: UIViewController {
         }
     }
 
+    var checkinValues: [Attendee.Checkin]!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         checkinSelect.delegate = self
+        checkinSelect.removeAllSegments()
+        for checkin in checkinValues.reversed() {
+            checkinSelect.insertSegment(withTitle: checkin.rawValue, at: 0, animated: false)
+        }
         reader.completionBlock = self.finishedScanning(result:)
         reader.modalPresentationStyle = .formSheet
     }
@@ -120,6 +126,7 @@ class ScanViewController: UIViewController {
         case "showAttendee":
             let attendeeVC = segue.destination as! AttendeeViewController
             attendeeVC.attendee = sender as! Attendee
+            attendeeVC.checkinValues = self.checkinValues
         default:
             break
         }
@@ -135,7 +142,7 @@ extension ScanViewController: MultiSelectSegmentedControlDelegate {
             // deselect all except this one
             multiSelectSegmentedControl.selectedSegmentIndexes = [numericCast(index)]
             let title = multiSelectSegmentedControl.titleForSegment(at: numericCast(index))!
-            self.checkinMode = .checkin(Attendee.Checkin(rawValue: title)!)
+            self.checkinMode = .checkin(Attendee.Checkin(rawValue: title))
         }
     }
 }

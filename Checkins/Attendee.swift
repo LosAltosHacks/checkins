@@ -33,12 +33,16 @@ struct Attendee: Codable {
     struct Barcode: Codable {
         let text: String
     }
-    enum Checkin: String, Codable {
-        case breakfast = "Breakfast"
-        case lunch = "Lunch"
-        case dinner = "Dinner"
 
-        static let values: [Checkin] = [.breakfast, .lunch, .dinner]
+    struct Checkin: Codable, RawRepresentable, Hashable {
+        var rawValue: String
+
+        var hashValue: Int {
+            return rawValue.hashValue
+        }
+        static func ==(lhs: Checkin, rhs: Checkin) -> Bool {
+            return lhs.rawValue == rhs.rawValue
+        }
     }
 
     let id: String
@@ -84,6 +88,15 @@ extension Attendee {
             checkins: attendee.decodeIfPresent([Checkin].self, forKey: .checkins) ?? []
         )
     }
-
 }
 
+extension Attendee.Checkin {
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(rawValue)
+    }
+
+    init(from decoder: Decoder) throws {
+        self.rawValue = try decoder.singleValueContainer().decode(String.self)
+    }
+}

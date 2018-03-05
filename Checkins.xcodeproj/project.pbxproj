@@ -10,6 +10,7 @@
 		370813F5201C132400BCDB26 /* Attendee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370813F4201C132400BCDB26 /* Attendee.swift */; };
 		370813F7201E908200BCDB26 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370813F6201E908200BCDB26 /* Alert.swift */; };
 		370813FA201E947600BCDB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370813F8201E947600BCDB26 /* Main.storyboard */; };
+		37391C06204DFA2E001D8B79 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37391C05204DFA2E001D8B79 /* LoadingViewController.swift */; };
 		377954962019840000CBE146 /* Alamofire.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 377954922019840000CBE146 /* Alamofire.framework.dSYM */; };
 		377954972019840000CBE146 /* QRCodeReader.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 377954932019840000CBE146 /* QRCodeReader.framework.dSYM */; };
 		377954982019840600CBE146 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377954902019840000CBE146 /* Alamofire.framework */; };
@@ -61,6 +62,7 @@
 		370813F4201C132400BCDB26 /* Attendee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendee.swift; sourceTree = "<group>"; };
 		370813F6201E908200BCDB26 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		370813F9201E947600BCDB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		37391C05204DFA2E001D8B79 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		377954902019840000CBE146 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		377954912019840000CBE146 /* QRCodeReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCodeReader.framework; path = Carthage/Build/iOS/QRCodeReader.framework; sourceTree = "<group>"; };
 		377954922019840000CBE146 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
@@ -268,7 +270,6 @@
 		37CA8F94201BAB95009A25F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				37CA8F97201BABC4009A25F4 /* AppDelegate.swift */,
 				37CA8F99201BABC5009A25F4 /* Assets.xcassets */,
 				37CA8F98201BABC5009A25F4 /* Info.plist */,
 				37CA8F95201BABC4009A25F4 /* secrets.plist */,
@@ -297,9 +298,11 @@
 		37F65FFF201959D900600D25 /* Checkins */ = {
 			isa = PBXGroup;
 			children = (
+				37CA8F97201BABC4009A25F4 /* AppDelegate.swift */,
 				37F6602820195DEA00600D25 /* Airtable.swift */,
 				370813F6201E908200BCDB26 /* Alert.swift */,
 				370813F4201C132400BCDB26 /* Attendee.swift */,
+				37391C05204DFA2E001D8B79 /* LoadingViewController.swift */,
 				37F66002201959D900600D25 /* ScanViewController.swift */,
 				37CA8F91201BAB48009A25F4 /* AttendeeViewController.swift */,
 				370813F8201E947600BCDB26 /* Main.storyboard */,
@@ -419,6 +422,7 @@
 				37CA8F9B201BABC5009A25F4 /* Secrets.swift in Sources */,
 				37F6602920195DEA00600D25 /* Airtable.swift in Sources */,
 				370813F5201C132400BCDB26 /* Attendee.swift in Sources */,
+				37391C06204DFA2E001D8B79 /* LoadingViewController.swift in Sources */,
 				37CA8F9C201BABC5009A25F4 /* AppDelegate.swift in Sources */,
 				37CA8F92201BAB48009A25F4 /* AttendeeViewController.swift in Sources */,
 				370813F7201E908200BCDB26 /* Alert.swift in Sources */,

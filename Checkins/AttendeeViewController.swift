@@ -24,6 +24,7 @@ class AttendeeViewController: UIViewController {
     }
 
     var attendee: Attendee!
+    var checkinValues: [Attendee.Checkin]!
 
     var titlesAndValues: [(String,String)] {
         func shorthand(closure: (Attendee) -> (Attendee.CodingKeys, String?)) -> (String, String) {
@@ -66,7 +67,7 @@ class AttendeeViewController: UIViewController {
     }
 
     @objc func switched(sender: UISwitch) {
-        let checkin = Attendee.Checkin.values[sender.tag]
+        let checkin = checkinValues[sender.tag]
 
         switch sender.isOn {
         case true:
@@ -101,7 +102,7 @@ extension AttendeeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return Attendee.Checkin.values.count
+            return checkinValues.count
         case 1:
             return titlesAndValues.count
         default:
@@ -113,7 +114,7 @@ extension AttendeeViewController: UITableViewDataSource {
         switch indexPath.section {
 
         case 0:
-            let checkin = Attendee.Checkin.values[indexPath.row]
+            let checkin = checkinValues[indexPath.row]
             let checkedIn = attendee.checkins.contains(checkin)
 
             let checkinSwitch = UISwitch()
