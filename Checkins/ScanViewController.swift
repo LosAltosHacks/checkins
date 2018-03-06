@@ -55,13 +55,12 @@ class ScanViewController: UIViewController {
     }
 
     func finishedScanning(result: QRCodeReaderResult?) {
-        reader.dismiss(animated: true, completion: nil)
+        reader.dismiss(animated: true) { [weak self] in
+            guard let sself = self else { return }
+            guard let code = result?.value else { return }
 
-        guard let code = result?.value else {
-            return
+            sself.performCheckin(code: code)
         }
-
-        performCheckin(code: code)
     }
 
     func performCheckin(code: String) {

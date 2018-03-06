@@ -35,7 +35,7 @@ struct Attendee: Codable {
     }
 
     struct Checkin: Codable, RawRepresentable, Hashable {
-        var rawValue: String
+        let rawValue: String
 
         var hashValue: Int {
             return rawValue.hashValue
