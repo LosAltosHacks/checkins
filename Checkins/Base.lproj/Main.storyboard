@@ -58,7 +58,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppj-l9-YP3">
                                 <rect key="frame" x="0.0" y="294" width="375" height="100"/>
-                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="0.66909509202453987" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="hw3-BV-Z43"/>
                                 </constraints>
@@ -76,9 +76,10 @@
                                     <segment title=""/>
                                     <segment title=""/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.6933021964703705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SNs-Sw-MlI" firstAttribute="bottom" secondItem="omo-Jd-NIH" secondAttribute="bottom" constant="19" id="8xv-JG-J3b"/>
                             <constraint firstItem="ppj-l9-YP3" firstAttribute="leading" secondItem="SNs-Sw-MlI" secondAttribute="leading" id="IZt-Wx-4Nj"/>
