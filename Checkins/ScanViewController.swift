@@ -50,7 +50,7 @@ class ScanViewController: UIViewController {
         return .lightContent
     }
 
-    @IBAction func startScan(_ sender: UIButton) {
+    @IBAction func startScan() {
         present(reader, animated: true, completion: nil)
     }
 
@@ -76,19 +76,19 @@ class ScanViewController: UIViewController {
                 hud.textLabel.text = "Error fetching attendee"
                 hud.indicatorView = JGProgressHUDErrorIndicatorView()
                 hud.dismiss(afterDelay: 1, animated: true)
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: s.startScan)
             case let .some(attendee):
                 hud.dismiss(animated: true)
-                s.found(attendee: attendee)
-            }
-        }
-    }
 
-    func found(attendee: Attendee) {
-        switch checkinMode {
-        case .general:
-            self.performSegue(withIdentifier: "showAttendee", sender: attendee)
-        case let .checkin(checkin):
-            self.checkIn(attendee: attendee, checkin: checkin)
+                switch s.checkinMode {
+                case .general:
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    s.performSegue(withIdentifier: "showAttendee", sender: attendee)
+                case let .checkin(checkin):
+                    s.checkIn(attendee: attendee, checkin: checkin)
+                }
+            }
         }
     }
 
@@ -97,7 +97,8 @@ class ScanViewController: UIViewController {
 
         var attendee = attendee
         guard !attendee.checkins.contains(checkin) else {
-            return self.alert(message: "(\(nameString)) already checked in for meal.")
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            return self.alert(message: "(\(nameString)) already checked in for \(checkin.rawValue).")
         }
         attendee.checkins.append(checkin)
 
@@ -111,12 +112,18 @@ class ScanViewController: UIViewController {
             case true:
                 hud.textLabel.text = "Checked in"
                 hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
             case false:
                 hud.textLabel.text = "Error checking in"
                 hud.indicatorView = JGProgressHUDErrorIndicatorView()
             }
 
-            hud.dismiss(afterDelay: 1, animated: true)
+            hud.dismiss(afterDelay: 0.5, animated: true)
+
+            // bring it back up after ASSUMING BAMBAM CHECKIN
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                self?.startScan()
+            }
         }
     }
 

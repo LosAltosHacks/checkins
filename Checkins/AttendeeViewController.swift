@@ -33,6 +33,7 @@ class AttendeeViewController: UIViewController {
         }
 
         return [
+            shorthand { (.type, $0.type?.rawValue) },
             shorthand { (.checkedIn, $0.checkedIn.description.capitalized) },
             shorthand { (.firstName, $0.firstName) },
             shorthand { (.lastName, $0.lastName) },
@@ -44,7 +45,6 @@ class AttendeeViewController: UIViewController {
             shorthand { (.phoneNumber, $0.phoneNumber) },
             shorthand { (.grade, $0.grade) },
             shorthand { (.gender, $0.gender) },
-            shorthand { (.tshirtSize, $0.tshirtSize) },
             shorthand { (.dietaryRestrictions, $0.dietaryRestrictions) },
         ]
     }

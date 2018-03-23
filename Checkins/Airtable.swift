@@ -11,7 +11,7 @@ import Alamofire
 class Airtable {
     static let appId = Secrets.global.airtableAppId
     static let apiKey = Secrets.global.airtableApiKey
-    static let root = URL(string: "https://api.airtable.com/v0/\(appId)/Attendees")!
+    static let root = URL(string: "https://api.airtable.com/v0/\(appId)/AttendeesMentors")!
 
     class func attendee(code: String, completion: @escaping (Attendee?) -> ()) {
         var components = URLComponents(url: root, resolvingAgainstBaseURL: false)!

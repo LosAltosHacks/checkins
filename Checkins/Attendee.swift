@@ -19,15 +19,15 @@ struct Attendee: Codable {
         case email = "Email"
         case age = "Age"
         case highSchool = "High School"
-        case guardianName = "Guardian/Parent Name"
-        case guardianEmail = "Guardian/Parent Email"
+        case guardianName = "Parent Name"
+        case guardianEmail = "Parent Email"
         case phoneNumber = "Phone Number"
         case grade = "Grade"
         case gender = "Gender"
-        case tshirtSize = "T-shirt Size"
         case dietaryRestrictions = "Dietary Restrictions"
         case checkedIn = "Checked In"
         case checkins = "Check-Ins"
+        case type = "Type"
     }
 
     struct Barcode: Codable {
@@ -45,6 +45,11 @@ struct Attendee: Codable {
         }
     }
 
+    enum AttendeeType: String, Codable {
+        case attendee = "Attendee"
+        case mentor = "Mentor"
+    }
+
     let id: String
     let createdTime: String
     let code: Barcode
@@ -58,8 +63,8 @@ struct Attendee: Codable {
     var phoneNumber: String?
     var grade: String?
     var gender: String?
-    var tshirtSize: String?
     var dietaryRestrictions: String?
+    var type: AttendeeType?
     var checkedIn: Bool
     var checkins: [Checkin] = []
 }
@@ -82,8 +87,8 @@ extension Attendee {
             phoneNumber: attendee.decodeIfPresent(String.self, forKey: .phoneNumber),
             grade: attendee.decodeIfPresent(String.self, forKey: .grade),
             gender: attendee.decodeIfPresent(String.self, forKey: .gender),
-            tshirtSize: attendee.decodeIfPresent(String.self, forKey: .tshirtSize),
             dietaryRestrictions: attendee.decodeIfPresent(String.self, forKey: .dietaryRestrictions),
+            type: attendee.decodeIfPresent(AttendeeType.self, forKey: .type),
             checkedIn: attendee.decodeIfPresent(Bool.self, forKey: .checkedIn) ?? false,
             checkins: attendee.decodeIfPresent([Checkin].self, forKey: .checkins) ?? []
         )

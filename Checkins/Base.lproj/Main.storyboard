@@ -67,7 +67,7 @@
                                     <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <connections>
-                                    <action selector="startScan:" destination="o4V-9Z-GZ8" eventType="touchUpInside" id="d8h-Nd-J5L"/>
+                                    <action selector="startScan" destination="o4V-9Z-GZ8" eventType="touchUpInside" id="zPX-Mo-brc"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="omo-Jd-NIH" customClass="MultiSelectSegmentedControl">
